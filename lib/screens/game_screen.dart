@@ -87,12 +87,20 @@ class _GameScreenState extends State<GameScreen> {
             Text("경험치: ${_hero.currentExperience} / ${_hero.maxExperience}"),
             Text("Gold: ${_hero.gold}"),
             SizedBox(height: 20),
-            Text("몬스터 체력: ${_monster.health}"),
+            if (_showCriticalHit)
+              AnimatedContainer(
+                duration: Duration(seconds: 1),
+                curve: Curves.easeInOut,
+                width: 100,
+                height: 100,
+                color: Colors.red,
+              ),
             if (_showCriticalHit)
               Text(
                 "치명타! ${_hero.criticalHitDamage}",
                 style: TextStyle(color: Colors.red, fontSize: 24, fontWeight: FontWeight.bold),
               ),
+            Text("몬스터 체력: ${_monster.health}"),
             ElevatedButton(
               onPressed: _attackMonster,
               child: Text("공격하기"),
