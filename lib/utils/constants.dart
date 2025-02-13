@@ -41,3 +41,9 @@ final BigInt INITIAL_EXPERIENCE = BigInt.from(0);
 
 // 초기 최대 경험치
 final BigInt INITIAL_MAX_EXPERIENCE = BigInt.from(100);
+
+// 잡몹 체력바 넓이
+final double MONSTER_HEALTH_BAR_WIDTH = 100;
+
+// 잡몹 체력바 높이
+final double MONSTER_HEALTH_BAR_HEIGHT = 10;
