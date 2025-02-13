@@ -15,7 +15,11 @@ class _GameScreenState extends State<GameScreen> {
   late MyHero _hero;
   late Monster _monster;
   //setState로 게임 시간 관리
-
+  void reRenderPerFrame(){
+    setState(() {
+      _game_service = GameService();
+    });
+  }
   bool _showCriticalHit = false;
 
   @override

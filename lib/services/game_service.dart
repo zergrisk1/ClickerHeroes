@@ -15,9 +15,11 @@ class GameService {
   void _startGlobalTime() {
     _ticker = Ticker((Duration elapsed) {
       _elapsedTime += elapsed; // 경과 시간 업데이트
+
       if (_elapsedTime.inSeconds >= 1) { // 1초가 경과했는지 체크
-        _updateGameTime();
         _elapsedTime = Duration.zero; // 경과 시간 초기화
+        print(_elapsedTime.inSeconds);
+        _updateGameTime();
       }
     });
     _ticker!.start();
