@@ -87,7 +87,7 @@ class Monster {
    return Positioned(
      left: x,
      top: y + MONSTER_HEALTH_BAR_HEIGHT + 20,
-     child: Image.asset('assets/images/monster.png', width: 100, height: 100),
+     child: Image.asset('assets/images/monster.png', width: 50, height: 50),
    );
  }
 // 5. 몬스터의 체력바를 그리는 메서드

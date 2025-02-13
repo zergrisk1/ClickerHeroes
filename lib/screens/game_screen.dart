@@ -14,12 +14,8 @@ class _GameScreenState extends State<GameScreen> {
   late GameService _game_service;
   late MyHero _hero;
   late Monster _monster;
+  late String formattedGameTime = "00:00";
   //setState로 게임 시간 관리
-  void reRenderPerFrame(){
-    setState(() {
-      _game_service = GameService();
-    });
-  }
   bool _showCriticalHit = false;
 
   @override
@@ -28,8 +24,16 @@ class _GameScreenState extends State<GameScreen> {
     _initializeGame();
   }
 
+  void _reRenderPerFrame() {
+    setState(() {
+      formattedGameTime = _game_service.getFormattedGameTime();
+    });
+  }
   void _initializeGame() {
     _game_service = GameService();
+    _game_service.gameMinutesStream.listen((_) {
+      _reRenderPerFrame();
+    });
     _hero = MyHero(
       clickAttackPower: BASE_CLICK_ATTACK_POWER,
       tickAttackPower: BASE_TICK_ATTACK_POWER,
@@ -114,7 +118,7 @@ class _GameScreenState extends State<GameScreen> {
               Container(
                 padding: EdgeInsets.all(16.0),
                 color: Colors.blue[100],
-                child: Text(_game_service.getFormattedGameTime()),
+                child: Text(formattedGameTime, style: TextStyle(color: Colors.white)),
                 ),
     ],
               ),
